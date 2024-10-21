@@ -19,7 +19,8 @@ def main():
     Player.containers = (updateable, drawable)
     Asteroid.containers = (asteroids, updateable, drawable)
     AsteroidField.containers = (updateable)
-    player = Player((SCREEN_WIDTH / 2), (SCREEN_HEIGHT / 2))
+    Shot.containers = (shots, updateable, drawable)
+    player = Player((SCREEN_WIDTH / 2), (SCREEN_HEIGHT / 2), shots)
     asteroid_field = AsteroidField()
 
     print("Starting asteroids!")
@@ -36,11 +37,16 @@ def main():
             obj.draw(screen)
 
         for asteroid in asteroids:
+            for shot in shots:
+                if shot.collision(asteroid):
+                    shot.kill()
+                    asteroid.split()
+
             if player.collision(asteroid):
                 print("Game over!")
                 sys.exit()
 
-        # 'refreshses' the screen, do everything before refreshing else ya won't see nuttin
+        # 'refreshes' the screen, do everything before refreshing else ya won't see nuttin
         pygame.display.flip()
         tick = clock.tick(60)
         dt = tick / 1000
