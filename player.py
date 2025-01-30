@@ -56,5 +56,3 @@ class Player(CircleShape):
         self.shots.add(shot)
 
         self.shoot_countdown = PLAYER_SHOOT_RATE
-
-        # Inside your Player class, handle the spacebar (pygame.K_SPACE) and call the shoot method when it is pressed.

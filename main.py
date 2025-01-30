@@ -27,7 +27,7 @@ def main():
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
 
-    # the 'game loop' where STUFF happens and screen is refreshed
+    # The main 'game loop'
     while True:
         pygame.Surface.fill(screen, (0, 0, 0, 1))
 
@@ -46,12 +46,12 @@ def main():
                 print("Game over!")
                 sys.exit()
 
-        # 'refreshes' the screen, do everything before refreshing else ya won't see nuttin
+        # Set the screen refresh, everything must happen before the refresh else it won't be displayed
         pygame.display.flip()
         tick = clock.tick(60)
         dt = tick / 1000
 
-        # check for window close, end process if closed
+        # check for window close event, end process if closed
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
