@@ -1,4 +1,4 @@
-# Asteroids in Python3!
+# Space Survival
 
 Little project made during the Boot.dev course to showcase using Python3 with Pygame.
 
